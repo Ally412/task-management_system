@@ -10,4 +10,12 @@ files:
     visible: false
   - name: build.gradle
     visible: true
+  - name: src/User.java
+    visible: true
+  - name: src/TaskManagerApp.java
+    visible: true
+  - name: src/UserRepository.java
+    visible: true
+  - name: src/UserAdapter.java
+    visible: true
 feedback_link: https://hyperskill.org/projects/423/stages/2459/implement#comment
