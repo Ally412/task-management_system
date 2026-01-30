@@ -1,0 +1,13 @@
+type: edu
+files:
+  - name: src/resources/application.properties
+    visible: true
+  - name: src/taskmanagement/Application.java
+    visible: true
+  - name: test/ApplicationTests.java
+    visible: false
+  - name: test/TestUser.java
+    visible: false
+  - name: build.gradle
+    visible: true
+feedback_link: https://hyperskill.org/projects/423/stages/2459/implement#comment

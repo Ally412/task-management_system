@@ -1,0 +1,25 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+#Gradle
+.gradle/
+build/
+out/
+bin/
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# System files
+.DS_Store
+Thumbs.db
+
+
+
+
