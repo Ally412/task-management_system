@@ -26,4 +26,6 @@ files:
     visible: true
   - name: src/taskmanagement/GlobalExceptionHandler.java
     visible: true
+  - name: src/taskmanagement/TaskManagementSystemConfig.java
+    visible: true
 feedback_link: https://hyperskill.org/projects/423/stages/2459/implement#comment
