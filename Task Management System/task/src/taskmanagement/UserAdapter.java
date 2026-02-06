@@ -1,7 +1,7 @@
+package taskmanagement;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.Collection;
 import java.util.List;
@@ -12,9 +12,7 @@ public class UserAdapter implements UserDetails {
         this.user = user;
     }
 
-    public String getEmail() {
-        return this.user.getEmail();
-    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
@@ -27,7 +25,7 @@ public class UserAdapter implements UserDetails {
 
     @Override
     public String getUsername() {
-        return "";
+        return user.getEmail();
     }
 
     @Override
