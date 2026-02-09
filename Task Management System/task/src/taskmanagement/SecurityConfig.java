@@ -20,6 +20,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/api/task").permitAll()
                         .requestMatchers("/api/accounts").permitAll()
+                        .requestMatchers("/h2-console/**").permitAll()
                 );
         return http.build();
     }

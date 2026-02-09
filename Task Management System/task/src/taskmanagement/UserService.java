@@ -1,5 +1,6 @@
 package taskmanagement;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -19,6 +20,7 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return null;
     }
+    @Transactional
     public void registerUser(RegistrationRequest registrationRequest) {
         User user = new User();
         user.setEmail(registrationRequest.getEmail());
