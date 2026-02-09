@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://hyperskill.org/api/projects/423/additional-files/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: "Fri, 06 Feb 2026 12:05:21 UTC"
+update_date: "Mon, 09 Feb 2026 09:42:18 UTC"
 stages:
   - id: 2459
     step: 40328
@@ -78,10 +78,10 @@ topics:
       theory_id: 5357
     - title: HTTP URL
       theory_id: 6740
-    - title: HTTP messages
-      theory_id: 6752
     - title: Introduction to Spring Web MVC
       theory_id: 13611
+    - title: HTTP messages
+      theory_id: 6752
     - title: REST
       theory_id: 7834
     - title: Postman
@@ -246,8 +246,6 @@ topics:
       theory_id: 7400
     - title: Arithmetic expressions
       theory_id: 7409
-    - title: Introduction to API
-      theory_id: 17007
     - title: Basic CREATE statement
       theory_id: 9084
     - title: Basic SELECT statement
@@ -256,18 +254,20 @@ topics:
       theory_id: 8611
     - title: Logic and comparison expressions
       theory_id: 8619
+    - title: Introduction to API
+      theory_id: 17007
     - title: The NULL value
       theory_id: 7907
     - title: Special WHERE operators
       theory_id: 10521
-    - title: JSON
-      theory_id: 6854
     - title: Basic INSERT statement
       theory_id: 9059
     - title: Basic DELETE statement
       theory_id: 9075
     - title: "Hashing: overview"
       theory_id: 9831
+    - title: JSON
+      theory_id: 6854
     - title: XML
       theory_id: 6901
     - title: Data and object mapping

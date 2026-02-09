@@ -1,17 +1,17 @@
 package taskmanagement;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
+@Import(SecurityConfig.class)
+@ComponentScan
 public class TaskManagementSystemConfig {
     @Bean
-    public UserService userService() {
-        return new UserService();
-    }
-
-    @Bean
-    public AuthController authController() {
-        return new AuthController();
+    public TaskController taskController() {
+        return new TaskController();
     }
 }
