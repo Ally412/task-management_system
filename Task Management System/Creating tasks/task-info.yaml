@@ -12,4 +12,8 @@ files:
     visible: false
   - name: test/TestUser.java
     visible: false
+  - name: src/taskmanagement/SecurityConfig.java
+    visible: true
+  - name: src/taskmanagement/TaskController.java
+    visible: true
 feedback_link: https://hyperskill.org/projects/423/stages/2460/implement#comment
