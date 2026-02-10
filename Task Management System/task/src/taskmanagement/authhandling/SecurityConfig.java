@@ -18,7 +18,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/api/task").permitAll()
+                        .requestMatchers("/api/tasks").permitAll()
                         .requestMatchers("/api/accounts").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
                 );
