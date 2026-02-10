@@ -1,4 +1,4 @@
-package taskmanagement;
+package taskmanagement.authhandling;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

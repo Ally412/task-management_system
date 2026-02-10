@@ -6,14 +6,22 @@ files:
     visible: true
   - name: build.gradle
     visible: true
+  - name: src/taskmanagement/authhandling/SecurityConfig.java
+    visible: true
+  - name: src/taskmanagement/taskhandling/TaskController.java
+    visible: true
   - name: test/ApplicationTests.java
     visible: false
   - name: test/TestTask.java
     visible: false
   - name: test/TestUser.java
     visible: false
-  - name: src/taskmanagement/SecurityConfig.java
+  - name: src/taskmanagement/taskhandling/TaskService.java
     visible: true
-  - name: src/taskmanagement/TaskController.java
+  - name: src/taskmanagement/taskhandling/Task.java
+    visible: true
+  - name: src/taskmanagement/taskhandling/AddingTaskRequest.java
+    visible: true
+  - name: src/taskmanagement/taskhandling/TaskRepository.java
     visible: true
 feedback_link: https://hyperskill.org/projects/423/stages/2460/implement#comment

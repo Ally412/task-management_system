@@ -1,4 +1,4 @@
-package taskmanagement;
+package taskmanagement.authhandling;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

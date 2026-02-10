@@ -1,4 +1,4 @@
-package taskmanagement;
+package taskmanagement.authhandling;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
