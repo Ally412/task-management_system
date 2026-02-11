@@ -18,16 +18,16 @@ public class TaskController {
         this.taskService = taskService;
     }
     @GetMapping
-    public ResponseEntity<List<Task>> getTasks(@RequestParam(required = false) String author) { //author = email
+    public ResponseEntity<List<TaskResponse>> getTasks(@RequestParam(required = false) String author) { //author = email
         //TODO: remove stab
         List<Task> tasks;
         if (author == null || author.isEmpty()) {
-            ResponseEntity.ok(taskService.getAllTasks());
+            return ResponseEntity.ok(taskService.getAllTasks());
         }
         return ResponseEntity.ok(taskService.getTasksByAuthor(author));
     }
     @PostMapping
-    public ResponseEntity<AddingTaskResponse> createTask(
+    public ResponseEntity<TaskResponse> createTask(
             @Valid @RequestBody AddingTaskRequest req,
             BindingResult bindingResult,
             @AuthenticationPrincipal
@@ -36,7 +36,7 @@ public class TaskController {
             return ResponseEntity.badRequest().build();
         }
         String userEmail = userDetails.getUsername();
-        AddingTaskResponse response = taskService.createTask(req, userEmail);
-        return  new ResponseEntity<>(response, HttpStatus.CREATED);
+        TaskResponse response = taskService.createTask(req, userEmail);
+        return  new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

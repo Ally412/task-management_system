@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -19,8 +20,9 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/api/accounts").permitAll()
                         .requestMatchers("/api/tasks").authenticated()
+                        .requestMatchers("/api/accounts").permitAll()
+                        .requestMatchers("/actuator/shutdown").permitAll()
                 )
                 .httpBasic(Customizer.withDefaults());
         return http.build();

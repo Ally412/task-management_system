@@ -14,6 +14,10 @@ import taskmanagement.taskhandling.TaskService;
 @ComponentScan
 public class TaskManagementSystemConfig {
     @Bean
+    public TaskManagementController taskManagementController() {
+        return new TaskManagementController();
+    }
+    @Bean
     public TaskController taskController(TaskService taskService) {
         return new TaskController(taskService);
     }

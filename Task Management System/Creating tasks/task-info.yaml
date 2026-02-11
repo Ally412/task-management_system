@@ -26,6 +26,8 @@ files:
     visible: true
   - name: src/resources/db/migration/V2__Create_task_table.sql
     visible: true
-  - name: src/taskmanagement/taskhandling/AddingTaskResponse.java
+  - name: src/taskmanagement/taskhandling/TaskResponse.java
+    visible: true
+  - name: src/taskmanagement/TaskManagementController.java
     visible: true
 feedback_link: https://hyperskill.org/projects/423/stages/2460/implement#comment

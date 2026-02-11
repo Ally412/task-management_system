@@ -1,5 +1,7 @@
 package taskmanagement.taskhandling;
 
+import org.springframework.data.domain.Sort;
+
 import java.util.List;
 
 public class TaskService {
@@ -8,19 +10,25 @@ public class TaskService {
     public TaskService(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
     }
-    public AddingTaskResponse createTask(AddingTaskRequest request, String author) {
+    public TaskResponse createTask(AddingTaskRequest request, String author) {
         Task task = new Task();
         task.setTitle(request.getTitle());
         task.setDescription(request.getDescription());
         task.setAuthor(author);
-        task.setStatus("Created");
+        task.setStatus("CREATED");
         task =  taskRepository.save(task);
-        return new AddingTaskResponse(task.getId(), task.getTitle(), task.getDescription(), task.getStatus(), author);
+        return new TaskResponse(task.getId().toString(), task.getTitle(), task.getDescription(), task.getStatus(), author);
     }
-    public List<Task> getAllTasks() {
-        return taskRepository.findAll();
+    public List<TaskResponse> getAllTasks() {
+        return taskRepository.findAll(Sort.by("id").descending()).stream()
+                .map(task -> new TaskResponse(task.getId().toString(),
+                        task.getTitle(), task.getDescription(), task.getStatus(), task.getAuthor()))
+                .toList();
     }
-    public List<Task> getTasksByAuthor(String author) {
-        return taskRepository.findByAuthorIgnoreCase(author);
+    public List<TaskResponse> getTasksByAuthor(String author) {
+        return taskRepository.findByAuthorIgnoreCaseOrderByIdDesc(author).stream()
+                .map(task -> new TaskResponse(task.getId().toString(),
+                        task.getTitle(), task.getDescription(), task.getStatus(), task.getAuthor()))
+                .toList();
     }
 }

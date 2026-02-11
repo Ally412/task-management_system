@@ -19,7 +19,7 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
-        User user = userRepository.findByEmail(userEmail).orElseThrow(() ->
+        User user = userRepository.findByEmailIgnoreCase(userEmail).orElseThrow(() ->
         {
             log.debug(String.format("User with email %s not found",  userEmail));
             return new UsernameNotFoundException(userEmail);
@@ -29,7 +29,7 @@ public class UserService implements UserDetailsService {
     @Transactional
     public void registerUser(RegistrationRequest registrationRequest) {
         User user = new User();
-        user.setEmail(registrationRequest.getEmail());
+        user.setEmail(registrationRequest.getEmail().toLowerCase());
         user.setPassword(passwordEncoder.encode(registrationRequest.getPassword()));
         if(userRepository.existsByEmail(user.getEmail())) {
             throw new EmailAlreadyExists("Email " + user.getEmail() + " already exists");
