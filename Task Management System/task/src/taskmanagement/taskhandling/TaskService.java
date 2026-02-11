@@ -20,4 +20,7 @@ public class TaskService {
     public List<Task> getAllTasks() {
         return taskRepository.findAll();
     }
+    public List<Task> getTasksByAuthor(String author) {
+        return taskRepository.findByAuthorIgnoreCase(author);
+    }
 }

@@ -1,7 +1,6 @@
 package taskmanagement.taskhandling;
 
 import jakarta.validation.Valid;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -19,9 +18,13 @@ public class TaskController {
         this.taskService = taskService;
     }
     @GetMapping
-    public ResponseEntity<List<Task>> getAllTasks() {
+    public ResponseEntity<List<Task>> getTasks(@RequestParam(required = false) String author) { //author = email
         //TODO: remove stab
-        return ResponseEntity.ok(taskService.getAllTasks());
+        List<Task> tasks;
+        if (author == null || author.isEmpty()) {
+            ResponseEntity.ok(taskService.getAllTasks());
+        }
+        return ResponseEntity.ok(taskService.getTasksByAuthor(author));
     }
     @PostMapping
     public ResponseEntity<AddingTaskResponse> createTask(
