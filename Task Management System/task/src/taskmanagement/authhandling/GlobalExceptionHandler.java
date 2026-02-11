@@ -12,6 +12,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(EmailAlreadyExists.class)
     public ResponseEntity<Void> handleEmailAlreadyExists(EmailAlreadyExists e) {
         log.warn("Unhandled exception occurred: ", e);
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
 }

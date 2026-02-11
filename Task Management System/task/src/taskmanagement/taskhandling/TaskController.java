@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/tasks")
 public class TaskController {
@@ -17,22 +19,20 @@ public class TaskController {
         this.taskService = taskService;
     }
     @GetMapping
-    public ResponseEntity<Void> getAllTasks() {
+    public ResponseEntity<List<Task>> getAllTasks() {
         //TODO: remove stab
-        return ResponseEntity.ok()
-                .build();
+        return ResponseEntity.ok(taskService.getAllTasks());
     }
     @PostMapping
     public ResponseEntity<AddingTaskResponse> createTask(
             @Valid @RequestBody AddingTaskRequest req,
             BindingResult bindingResult,
             @AuthenticationPrincipal
-            (expression = "#this instanceof T(org.springframework.security.core.userdetails.UserDetails) ? #this : null")
             UserDetails userDetails) {
         if (bindingResult.hasErrors()) {
             return ResponseEntity.badRequest().build();
         }
-        String userEmail = userDetails != null ? userDetails.getUsername() : null;
+        String userEmail = userDetails.getUsername();
         AddingTaskResponse response = taskService.createTask(req, userEmail);
         return  new ResponseEntity<>(response, HttpStatus.CREATED);
     }
