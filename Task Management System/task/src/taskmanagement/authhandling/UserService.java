@@ -1,11 +1,13 @@
 package taskmanagement.authhandling;
 
 import jakarta.transaction.Transactional;
+import lombok.extern.apachecommons.CommonsLog;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 //TODO: UserService must implement custom UserRegistrationService with register() method
+@CommonsLog
 public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -16,8 +18,13 @@ public class UserService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
+    public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(userEmail).orElseThrow(() ->
+        {
+            log.debug(String.format("User with email %s not found",  userEmail));
+            return new UsernameNotFoundException(userEmail);
+        });
+        return new UserAdapter(user);
     }
     @Transactional
     public void registerUser(RegistrationRequest registrationRequest) {
