@@ -24,7 +24,10 @@ public class UserService implements UserDetailsService {
             log.debug(String.format("User with email %s not found",  userEmail));
             return new UsernameNotFoundException(userEmail);
         });
-        return new UserAdapter(user);
+        return org.springframework.security.core.userdetails.User
+                .withUsername(user.getEmail())
+                .password(passwordEncoder.encode(user.getPassword()))
+                .build();
     }
     @Transactional
     public void registerUser(RegistrationRequest registrationRequest) {
