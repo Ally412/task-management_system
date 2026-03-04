@@ -12,4 +12,24 @@ files:
     visible: false
   - name: test/TestUser.java
     visible: false
+  - name: src/taskmanagement/taskhandling/TaskRepository.java
+    visible: true
+  - name: src/taskmanagement/taskhandling/Task.java
+    visible: true
+  - name: src/taskmanagement/taskhandling/AddingTaskRequest.java
+    visible: true
+  - name: src/taskmanagement/taskhandling/TaskService.java
+    visible: true
+  - name: src/taskmanagement/TaskManagementController.java
+    visible: true
+  - name: src/taskmanagement/taskhandling/TaskController.java
+    visible: true
+  - name: src/taskmanagement/taskhandling/TaskResponse.java
+    visible: true
+  - name: src/resources/db/migration/V2__Create_task_table.sql
+    visible: true
+  - name: src/taskmanagement/authhandling/SecurityConfig.java
+    visible: true
+  - name: src/taskmanagement/authhandling/RsaKeysConfiguration.java
+    visible: true
 feedback_link: https://hyperskill.org/projects/423/stages/2461/implement#comment

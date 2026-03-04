@@ -10,8 +10,4 @@ files:
     visible: false
   - name: build.gradle
     visible: true
-  - name: src/taskmanagement/SecurityConfig.java
-    visible: true
-  - name: src/taskmanagement/TaskController.java
-    visible: true
 feedback_link: https://hyperskill.org/projects/423/stages/2459/implement#comment
