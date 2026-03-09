@@ -5,12 +5,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+    @RestController
 @RequestMapping("/api/tasks")
 public class TaskController {
     private final TaskService taskService;
@@ -31,11 +32,11 @@ public class TaskController {
             @Valid @RequestBody AddingTaskRequest req,
             BindingResult bindingResult,
             @AuthenticationPrincipal
-            UserDetails userDetails) {
+            Jwt jwt) {
         if (bindingResult.hasErrors()) {
             return ResponseEntity.badRequest().build();
         }
-        String userEmail = userDetails.getUsername();
+        String userEmail = jwt.getSubject();
         TaskResponse response = taskService.createTask(req, userEmail);
         return  new ResponseEntity<>(response, HttpStatus.OK);
     }
