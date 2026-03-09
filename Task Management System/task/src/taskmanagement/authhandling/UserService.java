@@ -6,9 +6,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
 //TODO: UserService must implement custom UserRegistrationService with register() method
 @CommonsLog
-public class UserService implements UserDetailsService {
+@Service
+public class UserService implements UserDetailsService, UserRegistrationService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -26,11 +29,13 @@ public class UserService implements UserDetailsService {
         });
         return org.springframework.security.core.userdetails.User
                 .withUsername(user.getEmail())
-                .password(passwordEncoder.encode(user.getPassword()))
+                .password(user.getPassword())
                 .build();
     }
+
+    @Override
     @Transactional
-    public void registerUser(RegistrationRequest registrationRequest) {
+    public void register(RegistrationRequest registrationRequest) {
         User user = new User();
         user.setEmail(registrationRequest.getEmail().toLowerCase());
         user.setPassword(passwordEncoder.encode(registrationRequest.getPassword()));

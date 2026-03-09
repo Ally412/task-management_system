@@ -30,6 +30,6 @@ files:
     visible: true
   - name: src/taskmanagement/authhandling/SecurityConfig.java
     visible: true
-  - name: src/taskmanagement/authhandling/RsaKeysConfiguration.java
+  - name: src/taskmanagement/authhandling/UserRegistrationService.java
     visible: true
 feedback_link: https://hyperskill.org/projects/423/stages/2461/implement#comment
